@@ -25,6 +25,7 @@ namespace SportsStore.WebUI.DependencyResolution {
     using SportsStore.Domain;
     using SportsStore.Domain.Entities;
     using SportsStore.Domain.Abstract;
+    using SportsStore.Domain.Concrete;
 
     using StructureMap;
 	
@@ -45,22 +46,21 @@ namespace SportsStore.WebUI.DependencyResolution {
                 throw new ArgumentNullException("container");
             }
             Container = container;
-            AddBindings(container);
         }
 
         #endregion
 
-        private void AddBindings (IContainer container)
-        {
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new List<Product>
-            {
-                new Product { Name = "Football", Price = 25 },
-                new Product { Name = "Surf board", Price = 179 },
-                new Product { Name = "Running shoes", Price = 95 }
-            });
-            container.Inject<IProductRepository>(mock.Object);
-        }
+        //private void AddBindings (IContainer container)
+        //{
+        //    Mock<IProductRepository> mock = new Mock<IProductRepository>();
+        //    mock.Setup(m => m.Products).Returns(new List<Product>
+        //    {
+        //        new Product { Name = "Football", Price = 25 },
+        //        new Product { Name = "Surf board", Price = 179 },
+        //        new Product { Name = "Running shoes", Price = 95 }
+        //    });
+        //    container.Inject<IProductRepository>(mock.Object);
+        //}
 
         #region Public Properties
 
