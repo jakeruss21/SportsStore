@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SportsStore.WebUI.Models
 {
-    public class PageInfo
+    public class PagingInfo
     {
         public int TotalItems { get; set; }
         public int ItemsPerPage { get; set; }
