@@ -56,7 +56,7 @@ namespace SportsStore.UnitTests
                 TotalItems = 28,
                 ItemsPerPage = 10
             };
-
+            
             //Arrange - set up the delegate using a lambda expression
             Func<int, string> pageUrlDelegate = i => "Page" + i;
 
