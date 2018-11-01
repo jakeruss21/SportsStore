@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
+using System.Net;
+using System.Net.Mail;
 
 namespace SportsStore.Domain.Concrete
 {
@@ -34,7 +36,7 @@ namespace SportsStore.Domain.Concrete
         {
             using (var smtpClient = new SmtpClient())
             {
-                smtpClient.EnableSs1 = emailSettings.UseSsl;
+                smtpClient.EnableSsl = emailSettings.UseSsl;
                 smtpClient.Host = emailSettings.ServerName;
                 smtpClient.Port = emailSettings.ServerPort;
                 smtpClient.UseDefaultCredentials = false;
@@ -44,7 +46,7 @@ namespace SportsStore.Domain.Concrete
 
                 if (emailSettings.WriteAsFile)
                 {
-                    smtpClient.DiliveryMethod =
+                    smtpClient.DeliveryMethod =
                         SmtpDeliveryMethod.SpecifiedPickupDirectory;
                     smtpClient.PickupDirectoryLocation = emailSettings.FileLocations;
                     smtpClient.EnableSsl = false;
